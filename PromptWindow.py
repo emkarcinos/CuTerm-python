@@ -2,6 +2,7 @@ from InnerWindow import InnerWindow
 
 class PromptWindow(InnerWindow):
     def __init__(self, textObj, frameChar = ' ', winTitle = ""):
+        super().__init__(self)
         self.setDimmensions(textObj.sizeX+4, textObj.sizeY+6)
         self.initMatrix()
         self.setFrame(frameChar)
@@ -25,8 +26,8 @@ class PromptWindow(InnerWindow):
         if textObj.sizeX > self.sizeX-2 and textObj.sizeY > self.sizeY-3:
             return
         textObj.parent=self
-        startX = self.sizeX/2 - textObj.sizeX/2
-        startY = self.sizeY/2 - textObj.sizeY/2
+        startX = self.sizeX//2 - textObj.sizeX//2
+        startY = self.sizeY//2 - textObj.sizeY//2
         lineCount=0
         ptr=0
         for ch in textObj.finalStr:
@@ -38,8 +39,8 @@ class PromptWindow(InnerWindow):
                 ptr+=1
 
     def removeTextObject(self, textObj):
-        startY=self.sizeY/2 - textObj.sizeY/2
-        startX=self.sizeX/2 - textObj.sizeX/2 - 1
+        startY=self.sizeY//2 - textObj.sizeY//2
+        startX=self.sizeX//2 - textObj.sizeX//2 - 1
         for row in range (0, textObj.sizeY):
             for col in range(0, textObj.sizeX):
                 self.drawingMatrix[row+startY][col+startX]=' '

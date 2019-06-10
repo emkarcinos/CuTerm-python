@@ -17,7 +17,7 @@ class StringTools(object):
         for line in range(0, sizeY):
             cursorPos=lastEndPos
             lastDelimOccurrence=cursorPos
-            for cursorPos in range(cursorPos, len(text)):
+            while cursorPos<len(text):
                 if StringTools().isDelimeter(text[cursorPos]):
                     if cursorPos-lastEndPos<sizeX:
                         lastDelimOccurrence=cursorPos
@@ -32,6 +32,7 @@ class StringTools(object):
                             finalStr+="\n"
                         lastEndPos=lastDelimOccurrence+1
                         break
+            cursorPos+=1
         if cursorPos==len(text):
             for i in range(lastEndPos, len(text)):
                 finalStr+=text[i]

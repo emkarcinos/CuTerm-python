@@ -2,6 +2,7 @@ from InnerWindow import InnerWindow
 
 class PasswordPrompt(InnerWindow):
     def __init__(self, frameChar = ' ', winTitle = ""):
+        super().__init__()
         self.setDimmensions(51, 6)
         self.initMatrix()
         self.setFrame(frameChar)
@@ -11,7 +12,7 @@ class PasswordPrompt(InnerWindow):
 
     def addPassText(self):
         text = "Enter Password:"
-        startPos = self.sizeX/2 - len(text)/2
+        startPos = self.sizeX//2 - len(text)//2
         for pos in range(0, len(text)):
             self.drawingMatrix[1][startPos + pos]=text[pos]
 

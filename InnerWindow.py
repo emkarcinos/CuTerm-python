@@ -2,6 +2,7 @@ from Window import Window
 
 class InnerWindow(Window):
     def __init__(self):
+        super().__init__()
         self.posX=0
         self.posY=0
         self.sizeX=0
@@ -31,7 +32,7 @@ class InnerWindow(Window):
 
     def setTitle(self, winTitle):
         titleLength=len(winTitle)
-        writePos=self.sizeX/2 - titleLength/2
+        writePos=self.sizeX//2 - titleLength//2
         for i in range(0, titleLength):
             self.drawingMatrix[0][writePos+i]=winTitle[i]
 
