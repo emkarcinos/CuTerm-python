@@ -67,4 +67,4 @@ class TerminalWindow(Window):
     
     def __del__(self):
         self.clear()
-        os.system('setterm -cursor off')
+        os.system('setterm -cursor on')
