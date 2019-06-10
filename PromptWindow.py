@@ -13,9 +13,9 @@ class PromptWindow(InnerWindow):
         destinationX=self.posX+2
         destinationY=self.posY + self.sizeY - 2
         for row in range(0, destinationY):
-            print(u"\033[1B")
+            print(u"\033[1B", end="")
         for col in range(0, destinationX):
-            print(u"\033[1C")
+            print(u"\033[1C", end="")
 
     def drawSeparator(self):
         for pos in range(1, self.sizeX):
@@ -47,9 +47,9 @@ class PromptWindow(InnerWindow):
 
     def prompt(self, input):
         self.moveCursor()
-        print("> ")
+        print("> ", end="")
         input=str(input())
-        print(u"\033[2J\033[1;1H")
+        print(u"\033[2J\033[1;1H", end="")
     
     def clear(self):
         for row in range(0, self.sizeY-2):
