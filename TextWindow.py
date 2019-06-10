@@ -26,7 +26,7 @@ class TextWindow(InnerWindow):
             if ch=='\n':
                 lineCount+=1
                 ptr=0
-            elif(lineCount < self.sizeY-4):
+            elif(lineCount < self.sizeY-3):
                 self.drawingMatrix[startY+lineCount][startX+ptr]=ch
                 ptr+=1
         
@@ -38,4 +38,6 @@ class TextWindow(InnerWindow):
                 self.drawingMatrix[row+startY][col+startX]=' '
         textObj.parent=None
 
+    def __del__(self):
+        super(TextWindow, self).__del__()
     

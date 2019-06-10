@@ -16,25 +16,30 @@ terminal.append(win1)
 
 input()
 
-del win1
+win1.__del__()
 
+userInput=""
 win2=PromptWindow(textObj, '*', " User input ")
 terminal.append(win2)
 userInput=win2.prompt()
 
-del win2
+print(userInput)
+win2.__del__()
 
-textObj2 = TextObject(userInput, 61, 1)
-win3 = TextWindow(textObj2, '*', " You: ")
+textObj2 = TextObject(userInput, 41, 3)
+textObj2.format("center")
+win3 = TextWindow(textObj2, '*', " You ")
 terminal.append(win3)
+
 input()
 
-del win3
+win3.__del__()
 
 winPassword = PasswordPrompt('*')
 terminal.append(winPassword)
 password = winPassword.prompt()
-del winPassword
 
-del terminal
+winPassword.__del__()
+
+terminal.__del__()
     

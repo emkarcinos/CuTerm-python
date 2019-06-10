@@ -46,6 +46,7 @@ class InnerWindow(Window):
         pass
 
     def __del__(self):
-        self.parent.removeWindow(self)
+        if self.parent!=None:
+            self.parent.removeWindow(self)
 
     

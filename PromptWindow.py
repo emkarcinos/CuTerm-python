@@ -28,7 +28,7 @@ class PromptWindow(InnerWindow):
             return
         textObj.parent=self
         startX = self.sizeX//2 - textObj.sizeX//2
-        startY = self.sizeY//2 - textObj.sizeY//2
+        startY = self.sizeY//2 - textObj.sizeY//2 - 1
         lineCount=0
         ptr=0
         for ch in textObj.finalStr:
@@ -60,5 +60,8 @@ class PromptWindow(InnerWindow):
         for row in range(0, self.sizeY-2):
             for col in range(0, self.sizeX):
                 self.drawingMatrix[row][col]=' '
+
+    def __del__(self):
+        super(PromptWindow, self).__del__()
 
     

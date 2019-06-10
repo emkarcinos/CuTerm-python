@@ -43,9 +43,13 @@ class PasswordPrompt(InnerWindow):
         self.moveCursor()
         print("> ", end="")
         os.system("setterm -cursor on")
-        output = str(input())
+        output = input()
+        self.moveCursor()
         os.system("setterm -cursor off")
         return output
 
     def clear(self):
         pass
+
+    def __del__(self):
+        super(PasswordPrompt, self).__del__()
