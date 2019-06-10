@@ -1,8 +1,9 @@
 from InnerWindow import InnerWindow
+import os
 
 class PromptWindow(InnerWindow):
     def __init__(self, textObj, frameChar = ' ', winTitle = ""):
-        super().__init__(self)
+        super().__init__()
         self.setDimmensions(textObj.sizeX+4, textObj.sizeY+6)
         self.initMatrix()
         self.setFrame(frameChar)
@@ -46,18 +47,18 @@ class PromptWindow(InnerWindow):
                 self.drawingMatrix[row+startY][col+startX]=' '
         textObj.parent=None
 
-    def prompt(self, input):
+    def prompt(self):
         self.moveCursor()
         print("> ", end="")
-        input=str(input())
+        os.system('setterm -cursor on')
+        userInput=input()
         print(u"\033[2J\033[1;1H", end="")
+        os.system('setterm -cursor off')
+        return userInput
     
     def clear(self):
         for row in range(0, self.sizeY-2):
             for col in range(0, self.sizeX):
                 self.drawingMatrix[row][col]=' '
-
-    def __del__(self):
-        pass
 
     

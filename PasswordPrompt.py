@@ -1,4 +1,5 @@
 from InnerWindow import InnerWindow
+import os
 
 class PasswordPrompt(InnerWindow):
     def __init__(self, frameChar = ' ', winTitle = ""):
@@ -38,13 +39,13 @@ class PasswordPrompt(InnerWindow):
     def removeTextObject(self, textObj):
         pass
 
-    def prompt(self, output):
+    def prompt(self):
         self.moveCursor()
         print("> ", end="")
+        os.system("setterm -cursor on")
         output = str(input())
+        os.system("setterm -cursor off")
+        return output
 
     def clear(self):
-        pass
-
-    def __del__(self):
         pass

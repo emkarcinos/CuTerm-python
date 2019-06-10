@@ -51,7 +51,7 @@ class StringTools(object):
                 line.pop(0)
             finalString+= strPredecessor
             finalString+= line
-            finalString+= 'n'
+            finalString+= '\n'
         return finalString
 
     @staticmethod
@@ -62,7 +62,7 @@ class StringTools(object):
             for ch in range(len(line), size):
                 line+=' '
             finalString+= line
-            finalString+= 'n'
+            finalString+= '\n'
         return finalString
 
     @staticmethod
@@ -75,5 +75,5 @@ class StringTools(object):
                 strPredecessor+=' '
             finalString+= strPredecessor
             finalString+= line
-            finalString+= 'n'
+            finalString+= '\n'
         return finalString

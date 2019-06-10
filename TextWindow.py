@@ -19,17 +19,17 @@ class TextWindow(InnerWindow):
             return
         textObj.parent=self
         startX = self.sizeX//2 - textObj.sizeX//2
-        startY = self.sizeY//2 - textObj.sizeY//2
+        startY = self.sizeY//2 - textObj.sizeY//2 
         lineCount = 0
         ptr = 0
         for ch in textObj.finalStr:
             if ch=='\n':
                 lineCount+=1
                 ptr=0
-            else:
+            elif(lineCount < self.sizeY-4):
                 self.drawingMatrix[startY+lineCount][startX+ptr]=ch
                 ptr+=1
-    
+        
     def removeTextObject(self, textObj):
         startX = self.sizeX//2 - textObj.sizeX//2
         startY = self.sizeY//2 - textObj.sizeY//2
@@ -37,8 +37,5 @@ class TextWindow(InnerWindow):
             for col in range(0, self.sizeX):
                 self.drawingMatrix[row+startY][col+startX]=' '
         textObj.parent=None
-    
-    def __del__(self):
-        pass
 
     
