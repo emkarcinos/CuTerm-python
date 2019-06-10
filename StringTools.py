@@ -38,15 +38,41 @@ class StringTools(object):
         return finalStr
 
     @staticmethod
-    def alignLineCenter(text, sizeX, sizeY):
+    def alignLineCenter(text, size):
         finalString=""
         lines=text.splitlines()
-        
+        for line in lines:
+            strPredecessor=""
+            for ch in range(len(line), size/2):
+                strPredecessor+=' '
+                line+=' '
+            if size%2 == 0:
+                line.pop(0)
+            finalString+= strPredecessor
+            finalString+= line
+            finalString+= 'n'
+        return finalString
 
     @staticmethod
-    def alignLineLeft(text, sizeX, sizeY):
-        pass
+    def alignLineLeft(text, size):
+        finalString=""
+        lines=text.splitlines()
+        for line in lines:
+            for ch in range(len(line), size):
+                line+=' '
+            finalString+= line
+            finalString+= 'n'
+        return finalString
 
     @staticmethod
-    def alignLineRight(text, sizeX, sizeY):
-        pass
+    def alignLineRight(text, size):
+        finalString=""
+        lines=text.splitlines()
+        for line in lines:
+            strPredecessor=""
+            for ch in range(len(line), size):
+                strPredecessor+=' '
+            finalString+= strPredecessor
+            finalString+= line
+            finalString+= 'n'
+        return finalString
