@@ -1,0 +1,49 @@
+from InnerWindow import InnerWindow
+
+class PasswordPrompt(InnerWindow):
+    def __init__(self, frameChar = ' ', winTitle = ""):
+        self.setDimmensions(51, 6)
+        self.initMatrix()
+        self.setFrame(frameChar)
+        self.setTitle(winTitle)
+        self.addPassText()
+        self.drawPromptBox()
+
+    def addPassText(self):
+        text = "Enter Password:"
+        startPos = self.sizeX/2 - len(text)/2
+        for pos in range(0, len(text)):
+            self.drawingMatrix[1][startPos + pos]=text[pos]
+
+    def moveCursor(self):
+        destinationX=self.posX+3
+        destinationY=self.posY + self.sizeY - 3
+        for row in range(0, destinationY):
+            print(u"\033[1B")
+        for col in range(0, destinationX):
+            print(u"\033[1C")
+
+    def drawPromptBox(self):
+        startX=3
+        startY=self.sizeY-4
+        for row in range(0,3):
+            for col in range(0, self.sizeX-5):
+                if row!=1:
+                    self.drawingMatrix[row+startY][col+startX]=self.frame
+        
+    def addTextObject(self, textObj):
+        pass
+    
+    def removeTextObject(self, textObj):
+        pass
+
+    def prompt(self, output):
+        self.moveCursor()
+        print("> ")
+        output = str(input())
+
+    def clear(self):
+        pass
+
+    def __del__(self):
+        pass
