@@ -22,9 +22,9 @@ class StringTools(object):
                     if cursorPos-lastEndPos<sizeX:
                         lastDelimOccurrence=cursorPos
                     else:
-                        for i in range(0, lastDelimOccurrence):
+                        for i in range(0, lastDelimOccurrence-lastEndPos):
                             finalStr+=text[i+lastEndPos]
-                        for spac in range(0, spacing):
+                        for spac in range(0, spacing+1):
                             if spac>=1:
                                 line+=1
                             if line>=sizeY: 
@@ -32,7 +32,7 @@ class StringTools(object):
                             finalStr+="\n"
                         lastEndPos=lastDelimOccurrence+1
                         break
-            cursorPos+=1
+                cursorPos+=1
         if cursorPos==len(text):
             for i in range(lastEndPos, len(text)):
                 finalStr+=text[i]
@@ -44,7 +44,7 @@ class StringTools(object):
         lines=text.splitlines()
         for line in lines:
             strPredecessor=""
-            for ch in range(len(line), size/2):
+            for ch in range(len(line), size//2):
                 strPredecessor+=' '
                 line+=' '
             if size%2 == 0:
