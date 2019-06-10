@@ -1,4 +1,4 @@
-from StringTools import *
+from StringTools import StringTools
 
 class TextObject():
     def __init__(self, text, x, y, spacing=0):
@@ -10,16 +10,25 @@ class TextObject():
         self.parent=None
 
     def appendString(self, text):
-        pass
+        if len(text==0):
+            self.textStr+= " "
+        self.textStr+=text
+        self.format()
 
-    def format(self, method, spacing=9999):
-        if spacing!=9999):
+    def format(self, method="left", spacing=9999):
+        if spacing!=9999:
             self.spacing=spacing
+        result=StringTools.splitStringToLines(self.textStr, self.sizeX, self.sizeY, self.spacing)
         if method=="right":
-            finalStr
+            self.finalStr=StringTools.alignLineRight(result, self.sizeX)
+        elif method=="center":
+            self.finalStr=StringTools.alignLineCenter(result, self.sizeX)
+        else:
+            self.finalStr=StringTools.alignLineLeft(result, self.sizeX)
     
     def __str__(self):
         return self.finalStr
     
     def __del__(self):
-        pass
+        self.textStr=""
+        self.finalStr=""
