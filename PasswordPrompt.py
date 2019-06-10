@@ -19,9 +19,9 @@ class PasswordPrompt(InnerWindow):
         destinationX=self.posX+3
         destinationY=self.posY + self.sizeY - 3
         for row in range(0, destinationY):
-            print(u"\033[1B")
+            print(u"\033[1B", end="")
         for col in range(0, destinationX):
-            print(u"\033[1C")
+            print(u"\033[1C", end="")
 
     def drawPromptBox(self):
         startX=3
@@ -39,7 +39,7 @@ class PasswordPrompt(InnerWindow):
 
     def prompt(self, output):
         self.moveCursor()
-        print("> ")
+        print("> ", end="")
         output = str(input())
 
     def clear(self):
